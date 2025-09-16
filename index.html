@@ -14,31 +14,41 @@
         <img src="assets/nome.png" alt="Logo Frantiesco Bolson" class="logo-img">
       </div>
 
-      <nav class="menu">
-        <a href="#sobre">
-          <img src="assets/quem-sou-eu.png" alt="Quem sou eu" class="menu-img">
-        </a>
-        <a href="#contato">
-          <img src="assets/contato.png" alt="Contato" class="menu-img">
-        </a>
-        <a href="#blog">
-          <img src="assets/blog.png" alt="Blog" class="menu-img">
-        </a>
-      </nav>
+      <div class="header-right">
+        <!-- menu desktop -->
+        <nav class="menu menu-desktop">
+          <a href="#sobre">
+            <img src="assets/quem-sou-eu.png" alt="Quem sou eu" class="menu-img">
+          </a>
+          <a href="#contato">
+            <img src="assets/contato.png" alt="Contato" class="menu-img">
+          </a>
+          <a href="#blog">
+            <img src="assets/blog.png" alt="Blog" class="menu-img">
+          </a>
+        </nav>
 
-      <div class="social">
-        <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram">
-          <img src="assets/instagram.png" alt="Instagram" class="social-icon">
-        </a>
-        <a href="https://wa.me/555596699774" target="_blank" aria-label="WhatsApp">
-          <img src="assets/whatsapp.png" alt="WhatsApp" class="social-icon">
-        </a>
+        <!-- social desktop -->
+        <div class="social">
+          <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram">
+            <img src="assets/instagram.png" alt="Instagram" class="social-icon">
+          </a>
+          <a href="https://wa.me/555596699774" target="_blank" aria-label="WhatsApp">
+            <img src="assets/whatsapp.png" alt="WhatsApp" class="social-icon">
+          </a>
+        </div>
       </div>
 
+      <!-- ícone hamburguer continua -->
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
     </header>
     <img src="assets/lampada.gif" alt="Lâmpada" class="decor decor-lampada">
     <img src="assets/sofa.png" alt="Sofá" class="decor decor-sofa">
     <img src="assets/cafe.gif" alt="Café" class="decor decor-cafe">
+    <img src="assets/planta.png" alt="Planta decorativa" class="decor decor-planta">
+    <img src="assets/porta.png" alt="Planta decorativa" class="decor decor-porta">
   </section>
 
   <section id="sobre" class="section section-sobre">
@@ -80,5 +90,6 @@
   <section id="blog" class="section section-blog">
     <!-- Ícone de café e livro aberto -->
   </section>
+  <script src="script.js"></script>
 </body>
 </html>

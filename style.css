@@ -44,10 +44,15 @@ body {
   width: 90%;
   max-width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* logo e bloco direito */
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 28px; /* espaço entre menu e ícones */
 }
 
 .logo-img {
@@ -61,10 +66,53 @@ body {
   color: #333;
 }
 
-.menu {
+/* ======== MENU DESKTOP E MOBILE ======== */
+
+/* menu desktop */
+.menu-desktop {
   display: flex;
   gap: 28px;
   flex-wrap: wrap;
+}
+
+/* ícone hamburguer */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: relative; /* referência para o dropdown */
+  z-index: 1100;
+}
+
+/* menu mobile (oculto por padrão) */
+.menu-mobile {
+  flex-direction: column;
+  gap: 16px;
+  background-color: #e7b184;
+  position: absolute;
+  top: 120%;   /* aparece logo abaixo do ícone */
+  right: 0;    /* alinhado à direita do botão */
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+
+  /* estado inicial (fechado) */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-mobile.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu-mobile a {
+  display: block;
+  text-align: center;
 }
 
 .menu-img {
@@ -178,19 +226,36 @@ body {
 
 .decor-lampada {
   top: -5px;
-  left: 38%;
+  left: 50%;
   transform: translateX(-50%);
-  width: 20%;
+  width: 18%;
+  z-index: 1;
 }
 
 .decor-sofa {
-  bottom: 5%;
+  bottom: 12%; /* sobe mais no desktop também */
+  left: 45%;
   width: 40%;
 }
 
 .decor-cafe {
-  bottom: 20%;
+  bottom: 27%; /* sobe junto com o sofá */
+  left: 58%;
   width: 15%;
+}
+
+.decor-planta {
+  position: absolute;
+  bottom: 30%;
+  left: 28%;
+  width: 5%;
+  z-index: 1;
+}
+
+.decor-porta {
+  bottom: 14%; /* sobe mais no desktop também */
+  left: 5%;
+  width: 2%;
 }
 
 .btn-img {
@@ -204,18 +269,53 @@ body {
   transform: scale(1.05);
 }
 
-/* Responsividade */
+.social-mobile {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-mobile .social-icon {
+  height: 28px;
+  width: auto;
+  transition: transform 0.2s ease;
+}
+
+.social-mobile .social-icon:hover {
+  transform: scale(1.2);
+}
+
+/* ======== RESPONSIVIDADE ======== */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    flex-direction: row;              /* força lado a lado */
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;   /* logo à esquerda, menu à direita */
+    gap: 12px;
+    width: 92%;
   }
 
-  .menu {
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  /* esconde menu desktop */
+  .menu-desktop {
+    display: none;
+  }
+
+  /* mostra ícone hamburguer */
+  .menu-toggle {
+    display: block;
+    margin-left: auto; /* cola o ícone à direita */
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .logo-img {
+    width: clamp(180px, 48vw, 240px); /* reduz fluído */
   }
 
   .menu a {
@@ -224,6 +324,20 @@ body {
 
   .social {
     justify-content: flex-start;
+  }
+
+  .decor-sofa {
+    width: 42%;
+    bottom: 15%;
+  }
+
+  .decor-planta {
+    left: 22%;
+    width: 6%;
+  }
+
+  .social {
+    display: flex;
   }
 }
 
@@ -243,7 +357,7 @@ body {
   }
 
   .logo-img {
-    width: 340px;
+    width: clamp(170px, 60vw, 220px); /* ainda menor em telas pequenas */
   }
 
   .logo h1 {
@@ -256,20 +370,35 @@ body {
   }
 
   .decor-lampada {
-    width: 200px;
-    left: 60px;
-    top: 350px;
+    width: 320px;
+    top: 10;
+    left: 70%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .decor-planta {
+    bottom: 38%;
+    left: 25%;
+    width: 10%;
   }
 
   .decor-sofa {
     width: 370px;
-    bottom: 10%;
+    left: 50%;
+    bottom: 18%; /* sobe bastante no mobile */
   }
 
   .decor-cafe {
-    width: 115px;
-    right: 33%;
-    bottom: 19%;
+    width: 110px;
+    right: 35%;
+    bottom: 28%; /* sobe junto */
+  }
+
+  .btn-img {
+    width: 250px;
+    height: auto;
+    margin-bottom: 0; /* remove o empurrão pra baixo */
   }
 
   .section-sobre {
@@ -324,13 +453,39 @@ body {
     justify-content: center;
   }
 
-  .btn-img {
-    width: 250px;
-    height: auto;
-    margin-bottom: 0px;
-  }
-
   .btn-img:hover {
     transform: scale(1.2);
   }
+}
+
+/* garante que TODO o header (e o menu dentro dele) fique acima das decorações */
+.header {
+  z-index: 50;  /* qualquer valor > z-index das .decor */
+}
+
+/* as decorações ficam abaixo do header/menu */
+.decor,
+.decor-lampada,
+.decor-sofa,
+.decor-cafe {
+  z-index: 1;
+}
+
+/* menu com fundo sólido e animação já aplicada */
+.menu-mobile {
+  background-color: #e7b485;           /* sólido, cobre a luminária */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+
+  /* estado fechado (mantém sua animação atual) */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  z-index: 100;                      /* acima do header e MUITO acima das decorações */
+}
+
+.menu-mobile.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
