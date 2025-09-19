@@ -6,14 +6,20 @@
   <title>Frantiesco Bolson | Psicólogo</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <section id="home" class="section section-home">
     <header class="header">
+      <!-- logo sempre à esquerda -->
       <div class="logo">
         <img src="assets/nome.png" alt="Logo Frantiesco Bolson" class="logo-img">
       </div>
 
+      <!-- centro + direita -->
       <div class="header-right">
         <!-- menu desktop -->
         <nav class="menu menu-desktop">
@@ -23,9 +29,9 @@
           <a href="#contato">
             <img src="assets/contato.png" alt="Contato" class="menu-img">
           </a>
-          <a href="#blog">
+          <!-- <a href="#blog">
             <img src="assets/blog.png" alt="Blog" class="menu-img">
-          </a>
+          </a> -->
         </nav>
 
         <!-- social desktop -->
@@ -39,32 +45,88 @@
         </div>
       </div>
 
-      <!-- ícone hamburguer continua -->
+      <!-- ícone hamburguer (aparece só no mobile) -->
       <div class="menu-toggle" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
       </div>
+
+      <!-- menu mobile -->
+      <nav class="menu-mobile" id="menuMobile">
+        <a href="#sobre">
+          <img src="assets/quem-sou-eu.png" alt="Quem sou eu" class="menu-img">
+        </a>
+        <a href="#contato">
+          <img src="assets/contato.png" alt="Contato" class="menu-img">
+        </a>
+        <!-- <a href="#blog">
+          <img src="assets/blog.png" alt="Blog" class="menu-img">
+        </a> -->
+        <div class="social-mobile">
+          <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram">
+            <img src="assets/instagram.png" alt="Instagram" class="social-icon">
+          </a>
+          <a href="https://wa.me/555596699774" target="_blank" aria-label="WhatsApp">
+            <img src="assets/whatsapp.png" alt="WhatsApp" class="social-icon">
+          </a>
+        </div>
+      </nav>
     </header>
+
+    <!-- decorações -->
     <img src="assets/lampada.gif" alt="Lâmpada" class="decor decor-lampada">
     <img src="assets/sofa.png" alt="Sofá" class="decor decor-sofa">
     <img src="assets/cafe.gif" alt="Café" class="decor decor-cafe">
     <img src="assets/planta.png" alt="Planta decorativa" class="decor decor-planta">
-    <img src="assets/porta.png" alt="Planta decorativa" class="decor decor-porta">
+    <img src="assets/porta.png" alt="Porta decorativa" class="decor decor-porta">
   </section>
 
   <section id="sobre" class="section section-sobre">
     <div class="sobre-container">
-      <img src="assets/foto.gif" alt="Frantiesco segurando quadro" class="foto-quadro">
-      <div class="sobre-texto">
+      
+      <!-- Coluna esquerda -->
+      <div class="sobre-texto-esquerda">
+        <div class="destaque1">
+          Viver não é seguir<br>
+          uma linha reta,
+        </div>
+        <div class="destaque2">
+          é aprender a navegar<br>
+          pela espiral de si mesmo.
+        </div>
         <p>
-          Viver não é seguir uma linha reta, é aprender a navegar pela espiral de si mesmo.
-          É com esse olhar que recebo cada pessoa no consultório: atento aos ciclos que se repetem, às histórias não ditas, às perguntas que insistem em voltar. Meu trabalho é escutar para além do que é dito, é  traduzir padrões em possibilidades, dúvidas em caminhos, sintomas em sentido.
-          Atuo com base na Terapia do Esquema (TE) e na Terapia Cognitivo Comportamental (TCC), integrando passado, presente e futuro, razão e emoção, dor e potência.
-          Acredito que muitos dos nossos impasses não surgem por acaso, são formas antigas de proteção, que hoje talvez já não sirvam mais. E é nesse entrelugar, entre o que já não basta e o que ainda não sabemos ser, que a terapia acontece.
-          Mais do que oferecer respostas prontas, meu compromisso é abrir espaço para que você possa fazer perguntas novas. Com escuta, com presença e com clareza. Porque autoconhecimento não é fórmula, é processo. E nesse processo, cada passo importa.
-          Seja bem-vindo.
-          Aqui, a escuta cria caminho e sentido.
+          É com esse olhar que recebo cada pessoa no consultório: atento 
+          aos ciclos que se repetem, às histórias não ditas, às perguntas que 
+          insistem em voltar. Meu trabalho é escutar para além do que é dito, 
+          é traduzir padrões em possibilidades, dúvidas em caminhos, 
+          sintomas em sentido. Atuo com base na Terapia do Esquema (TE) e 
+          na Terapia Cognitivo Comportamental (TCC), integrando passado, 
+          presente e futuro, razão e emoção, dor e potência.
         </p>
       </div>
+
+      <!-- Coluna central -->
+      <div class="sobre-foto">
+        <div class="titulo-sobre-container">
+          <h2 class="titulo-sobre-quem">Quem</h2>
+          <h2 class="titulo-sobre-sou-eu">sou eu?</h2>
+        </div>
+        <img src="assets/foto.gif" alt="Frantiesco segurando quadro" class="foto-quadro">
+      </div>
+
+      <!-- Coluna direita -->
+      <div class="sobre-texto-direita">
+        <p>
+          Acredito que muitos dos nossos impasses não surgem por acaso, são formas antigas de proteção, que hoje talvez já não sirvam mais.<br>
+          É nesse entrelugar, entre o que já não basta e o que ainda não sabemos ser, que a terapia acontece. Mais do que oferecer respostas prontas,
+          meu compromisso é abrir espaço para que você possa fazer perguntas novas.<br>
+          Com escuta, com presença e com clareza.<br>
+          Porque autoconhecimento não é fórmula, é processo.<br>
+          E nesse processo, cada passo importa.<br>
+          <br>
+          Seja bem-vindo. Aqui, a escuta cria caminho e sentido.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -72,24 +134,31 @@
     <div class="contato-container">
       <div class="contato-texto">
         <p>
-          Nem sempre sabemos por onde começar.
-          Mas às vezes, é o encontro que nos mostra o caminho.
+          Nem sempre sabemos por onde começar.<br>
+          <strong>Mas às vezes,<br>
+            é o encontro que nos mostra o caminho.</strong>
         </p>
       </div>
 
-      <img src="assets/telefone.gif" alt="Telefone vintage" class="telefone-gif">
+      <div class="telefone-wrapper">
+        <img src="assets/telefone.png" alt="Telefone vintage" class="telefone-gif">
 
-      <div class="contato-botao">
-        <a href="https://wa.me/555596699774" target="_blank" aria-label="Agende sua consulta">
-          <img src="assets/agende-sua-consulta.png" alt="Agende sua consulta" class="btn-img">
-        </a>
+        <div class="contato-botao">
+          <a href="https://wa.me/555596699774" target="_blank" aria-label="Agende sua consulta">
+            <picture>
+              <!-- Versão mobile -->
+              <source srcset="assets/agende-sua-consulta-mobile.png" media="(max-width: 768px)">
+              <!-- Versão desktop (padrão) -->
+              <img src="assets/agende-sua-consulta.png" alt="Agende sua consulta" class="btn-img">
+            </picture>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="blog" class="section section-blog">
-    <!-- Ícone de café e livro aberto -->
-  </section>
+  <!-- <section id="blog" class="section section-blog">
+  </section> -->
   <script src="script.js"></script>
 </body>
 </html>

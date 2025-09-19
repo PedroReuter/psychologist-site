@@ -1,12 +1,11 @@
-// Função para abrir/fechar o menu mobile
 function toggleMenu() {
-  const menu = document.getElementById("menuMobile");
-  menu.classList.toggle("show");
+  const menuMobile = document.getElementById("menuMobile");
+  menuMobile.classList.toggle("show");
 }
 
-// Fecha o menu ao clicar em um link (melhor UX em mobile)
-document.querySelectorAll("#menuMobile a").forEach(link => {
+document.querySelectorAll(".menu-mobile a").forEach(link => {
   link.addEventListener("click", () => {
-    document.getElementById("menuMobile").style.display = "none";
+    const menuMobile = document.getElementById("menuMobile");
+    menuMobile.classList.remove("show");
   });
 });
