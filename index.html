@@ -13,64 +13,46 @@
 </head>
 <body>
   <section id="home" class="section section-home">
-    <header class="header">
-      <!-- logo sempre à esquerda -->
-      <div class="logo">
-        <img src="assets/nome.png" alt="Logo Frantiesco Bolson" class="logo-img">
-      </div>
-
-      <!-- centro + direita -->
-      <div class="header-right">
-        <!-- menu desktop -->
-        <nav class="menu menu-desktop">
-          <a href="#sobre">
-            <img src="assets/quem-sou-eu.png" alt="Quem sou eu" class="menu-img">
-          </a>
-          <a href="#contato">
-            <img src="assets/contato.png" alt="Contato" class="menu-img">
-          </a>
-          <!-- <a href="#blog">
-            <img src="assets/blog.png" alt="Blog" class="menu-img">
-          </a> -->
+    <header class="nav-float">
+      <div class="nav-float__inner">
+        <nav class="nav-float__left">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#sobre" class="nav-link">Sobre mim</a>
+          <a href="#contato" class="nav-link">Contato</a>
         </nav>
 
-        <!-- social desktop -->
-        <div class="social">
-          <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram">
-            <img src="assets/instagram.png" alt="Instagram" class="social-icon">
+        <div class="nav-float__logo">
+          <img src="assets/nome.png" alt="Frantiesco Bolson" />
+        </div>
+
+        <div class="nav-float__right">
+          <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram" class="social-link">
+            <img src="assets/instagram.png" alt="Instagram" />
           </a>
-          <a href="https://wa.me/5551997152767" target="_blank" aria-label="WhatsApp">
-            <img src="assets/whatsapp.png" alt="WhatsApp" class="social-icon">
+          <a href="https://wa.me/5551997152767" target="_blank" aria-label="WhatsApp" class="social-link">
+            <img src="assets/whatsapp.png" alt="WhatsApp" />
           </a>
         </div>
+
+        <!-- hamburguer no mobile -->
+        <button class="nav-float__toggle" aria-label="Abrir menu"
+                onclick="document.body.classList.toggle('nav-open')">
+          <span>MENU</span>
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
       </div>
 
-      <!-- ícone hamburguer (aparece só no mobile) -->
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i>
+      <div class="nav-float__drawer">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#sobre" class="nav-link">Sobre mim</a>
+        <a href="#contato" class="nav-link">Contato</a>
       </div>
-
-      <!-- menu mobile -->
-      <nav class="menu-mobile" id="menuMobile">
-        <a href="#sobre">
-          <img src="assets/quem-sou-eu.png" alt="Quem sou eu" class="menu-img">
-        </a>
-        <a href="#contato">
-          <img src="assets/contato.png" alt="Contato" class="menu-img">
-        </a>
-        <!-- <a href="#blog">
-          <img src="assets/blog.png" alt="Blog" class="menu-img">
-        </a> -->
-        <div class="social-mobile">
-          <a href="https://www.instagram.com/frantiescopsi/#" target="_blank" aria-label="Instagram">
-            <img src="assets/instagram.png" alt="Instagram" class="social-icon">
-          </a>
-          <a href="https://wa.me/5551997152767" target="_blank" aria-label="WhatsApp">
-            <img src="assets/whatsapp.png" alt="WhatsApp" class="social-icon">
-          </a>
-        </div>
-      </nav>
     </header>
+
+    <div class="hero-copy">
+      <p class="hero-eyebrow">AQUI A ESCUTA CRIA</p>
+      <p class="hero-script">caminho e sentido.</p>
+    </div>
 
     <!-- decorações -->
     <img src="assets/lampada.gif" alt="Lâmpada" class="decor decor-lampada">
@@ -82,8 +64,7 @@
 
   <section id="sobre" class="section section-sobre">
     <div class="sobre-container">
-      
-      <!-- Coluna esquerda -->
+
       <div class="sobre-texto-esquerda">
         <div class="destaque1">
           Viver não é seguir<br>
@@ -93,37 +74,66 @@
           é aprender a navegar<br>
           pela espiral de si mesmo.
         </div>
-        <p>
-          É com esse olhar que recebo cada pessoa no consultório: atento 
-          aos ciclos que se repetem, às histórias não ditas, às perguntas que 
-          insistem em voltar. Meu trabalho é escutar para além do que é dito, 
-          é traduzir padrões em possibilidades, dúvidas em caminhos, 
-          sintomas em sentido. Atuo com base na Terapia do Esquema (TE) e 
-          na Terapia Cognitivo Comportamental (TCC), integrando passado, 
-          presente e futuro, razão e emoção, dor e potência.
+
+        <p class="sobre-p">
+          É com esse olhar que recebo cada pessoa no consultório: atento
+          aos ciclos que se repetem, às histórias não ditas,
+          às perguntas que insistem em voltar.
+        </p>
+
+        <p class="sobre-p">
+          Me chamo Frantiesco Bolson, sou
+          psicólogo CRP 07/43226, formado pela
+          Universidade de Santa Cruz do Sul (UNISC).
+        </p>
+
+        <p class="sobre-p sobre-p-strong">
+          Atuo com base na Terapia do Esquema
+          integrando passado, presente e futuro,
+          razão e emoção, dor e potência.
+        </p>
+
+        <p class="sobre-p">
+          Meu trabalho é escutar para além do que
+          é dito, e traduzir padrões em possibilidades,
+          dúvidas em caminhos, sintomas em sentido.
         </p>
       </div>
 
-      <!-- Coluna central -->
       <div class="sobre-foto">
-        <div class="titulo-sobre-container">
-          <h2 class="titulo-sobre-quem">Quem</h2>
-          <h2 class="titulo-sobre-sou-eu">sou eu?</h2>
-        </div>
         <img src="assets/foto.gif" alt="Frantiesco segurando quadro" class="foto-quadro">
       </div>
 
-      <!-- Coluna direita -->
       <div class="sobre-texto-direita">
-        <p>
-          Acredito que muitos dos nossos impasses não surgem por acaso, são formas antigas de proteção, que hoje talvez já não sirvam mais.<br>
-          É nesse entrelugar, entre o que já não basta e o que ainda não sabemos ser, que a terapia acontece. Mais do que oferecer respostas prontas,
-          meu compromisso é abrir espaço para que você possa fazer perguntas novas.<br>
-          Com escuta, com presença e com clareza.<br>
-          Porque autoconhecimento não é fórmula, é processo.<br>
-          E nesse processo, cada passo importa.<br>
-          <br>
-          Seja bem-vindo. Aqui, a escuta cria caminho e sentido.
+        <p class="sobre-rp">
+          Com a Terapia do Esquema vamos identificar
+          padrões que se repetem, compreender suas
+          origens e abrir espaço para novas formas de se
+          relacionar consigo mesmo e com os outros.
+        </p>
+
+        <p class="sobre-rp">
+          Acredito que muitos dos nossos impasses
+          não surgem por acaso, são formas antigas de
+          proteção, que hoje talvez já não sirvam mais.
+        </p>
+
+        <p class="sobre-rp sobre-rp-strong">
+          E é nesse entrelugar, entre o que
+          já não basta e quem queremos nos
+          tornar que a psicoterapia acontece.
+        </p>
+
+        <p class="sobre-rp">
+          Mais do que oferecer respostas prontas,
+          meu compromisso é abrir espaço para
+          que você possa fazer novas perguntas.
+        </p>
+
+        <p class="sobre-callout">
+          Boas vindas,<br>
+          aqui a escuta cria<br>
+          <span>caminho e sentido.</span>
         </p>
       </div>
 
@@ -134,9 +144,10 @@
     <div class="contato-container">
       <div class="contato-texto">
         <p>
-          Nem sempre sabemos por onde começar.<br>
-          <strong>Mas às vezes,<br>
-            é o encontro que nos mostra o caminho.</strong>
+          Nem sempre sabemos<br>
+          por onde começar.<br>
+          <strong>Às vezes, é o encontro<br>
+          que nos mostra o caminho.</strong>
         </p>
       </div>
 
