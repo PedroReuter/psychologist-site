@@ -1,32 +1,41 @@
+/* ==================== FONTS ==================== */
+/* Passeio Light (300) + Passeio Medium (500)
+   Mantive fallback para os teus arquivos atuais (Regular/Bold). */
 @font-face{
-  font-family:'MinhaFonte';
-  src:url('assets/fonts/WOFF2/Passeio-Regular.woff2') format('woff2'),
-      url('assets/fonts/WOFF/Passeio-Regular.woff') format('woff');
-  font-weight:400;
+  font-family:'Passeio';
+  src:
+    url('assets/fonts/WOFF2/Passeio-Light.woff2') format('woff2'),
+    url('assets/fonts/WOFF2/Passeio-Regular.woff2') format('woff2'),
+    url('assets/fonts/WOFF/Passeio-Light.woff') format('woff'),
+    url('assets/fonts/WOFF/Passeio-Regular.woff') format('woff');
+  font-weight:300;
   font-style:normal;
-}
-@font-face{
-  font-family:'MinhaFonte';
-  src:url('assets/fonts/WOFF2/Passeio-Bold.woff2') format('woff2'),
-      url('assets/fonts/WOFF/Passeio-Bold.woff') format('woff');
-  font-weight:700;
-  font-style:normal;
-}
-@font-face{
-  font-family:'MinhaFonte2';
-  src:url('assets/fonts/WOFF/Passeio-Regular.woff2') format('woff2'),
-      url('assets/fonts/WOFF/Passeio-Bold.woff') format('woff');
-  font-weight:700;
-  font-style:normal;
-}
-@font-face{
-  font-family:'MinhaFonte3';
-  src:url('assets/fonts/WOFF/GLORIAHALLELUJAH-REGULAR.TTF') format('woff2'),
-      url('assets/fonts/WOFF/Passeio-Bold.woff') format('woff');
-  font-weight:700;
-  font-style:normal;
+  font-display:swap;
 }
 
+@font-face{
+  font-family:'Passeio';
+  src:
+    url('assets/fonts/WOFF2/Passeio-Medium.woff2') format('woff2'),
+    url('assets/fonts/WOFF2/Passeio-Bold.woff2') format('woff2'),
+    url('assets/fonts/WOFF/Passeio-Medium.woff') format('woff'),
+    url('assets/fonts/WOFF/Passeio-Bold.woff') format('woff');
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* Fonte script local */
+@font-face{
+  font-family:'GloriaHallelujahLocal';
+  src:
+    url('assets/fonts/WOFF/GLORIAHALLELUJAH-REGULAR.TTF') format('truetype');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* ==================== VARS ==================== */
 :root{
   --ink:#2b2b2b;
   --peach:#e8c5a0;
@@ -34,8 +43,12 @@
   --hero-eyebrow:#c89e72;
   --hero-script:#c15d43;
   --contato-top:#c0dce5;
+
+  /* Espaço “seguro” para não deixar a navbar fixa comer o conteúdo ao clicar em âncoras */
+  --header-safe: 150px;
 }
 
+/* ==================== RESET ==================== */
 *{
   margin:0;
   padding:0;
@@ -45,6 +58,10 @@ html,body{
   max-width:100%;
   overflow-x:hidden;
 }
+html{
+  scroll-behavior:smooth;
+}
+
 img{
   display:block;
   max-width:100%;
@@ -52,7 +69,6 @@ img{
 }
 body{
   font-family:'Georgia',serif;
-  scroll-behavior:smooth;
 }
 .section{
   min-height:100vh;
@@ -63,21 +79,23 @@ body{
   padding:20px;
 }
 
+/* ==================== HOME ==================== */
 .section-home{
   background:var(--peach);
   position:relative;
   overflow:hidden;
   min-height:100svh;
 }
+
 .section-sobre{
   background:#c0dce5;
-  padding:110px 40px 80px;
+  padding: calc(var(--header-safe) + 20px) 40px 90px;
+  justify-content:flex-start;
 }
+
 .section-contato{
   background:#8F9372;
-
-  /* mais espaço em cima, menos embaixo */
-  padding-top: clamp(70px, 20vh, 240px);
+  padding-top: clamp(calc(var(--header-safe) + 20px), 20vh, 240px);
   padding-left: 40px;
   padding-right: 40px;
 
@@ -85,10 +103,10 @@ body{
   justify-content:flex-start;
   align-items:center;
 
-  /* não deixa o min-height da .section te prender no centro */
   min-height: 100vh;
 }
 
+/* ==================== NAV ==================== */
 .nav-float{
   position:fixed;
   top:3%;
@@ -178,6 +196,10 @@ body.nav-open .nav-float__drawer{
 }
 
 @media (max-width:880px){
+  :root{
+    --header-safe: 160px;
+  }
+
   .nav-float{
     top:18px;
     left:18px;
@@ -205,27 +227,29 @@ body.nav-open .nav-float__drawer{
   }
 }
 
+/* ==================== HERO ==================== */
 .hero-copy{
   position:relative;
   z-index:10;
   text-align:center;
 }
 .hero-eyebrow{
-  font-family:"MinhaFonte2",sans-serif;
-  font-weight:800;
+  font-family:"Passeio",sans-serif;
+  font-weight:500;
   font-size:clamp(24px,3.2vw,36px);
   letter-spacing:.03em;
   color:var(--hero-eyebrow);
   margin-bottom:6px;
 }
 .hero-script{
-  font-family:"MinhaFonte3",sans-serif;
-  font-weight:700;
+  font-family:"GloriaHallelujahLocal", sans-serif;
+  font-weight:400;
   font-size:clamp(28px,4vw,54px);
   color:var(--hero-script);
   margin-top:-30px;
 }
 
+/* ==================== DECOR ==================== */
 .decor{
   position:absolute;
   z-index:1;
@@ -258,6 +282,7 @@ body.nav-open .nav-float__drawer{
   width:clamp(20px,2.6vw,40px);
 }
 
+/* ==================== SOBRE ==================== */
 .sobre-container{
   display:grid;
   grid-template-columns:
@@ -265,44 +290,51 @@ body.nav-open .nav-float__drawer{
     minmax(420px, 520px)
     minmax(380px, 460px);
   gap:60px;
-  align-items:start;
+  align-items:stretch; /* era start: precisamos “esticar” as colunas pra poder distribuir */
   justify-content:center;
   max-width:1460px;
   margin:0 auto;
   width:100%;
 }
+
+/* Sobre usa Passeio (Light/Medium) */
 .sobre-texto-esquerda,
 .sobre-texto-direita{
-  font-family:'Poppins',sans-serif;
+  font-family:'Passeio', sans-serif;
+  font-weight:300;
 }
+
 .sobre-texto-esquerda{
   text-align:left;
 }
+
 .destaque1{
   font-size:1.95rem;
-  font-weight:500;
+  font-weight:300;
   color:#E86D4F;
   line-height:1.22;
   margin-bottom:0;
 }
 .destaque2{
   font-size:1.95rem;
-  font-weight:700;
+  font-weight:500;
   color:#E86D4F;
   line-height:1.22;
   margin-bottom:26px;
 }
+
 .sobre-p{
   font-size:0.98rem;
-  font-weight:400;
+  font-weight:300;
   color:#333;
   line-height:1.85;
   margin:0 0 24px;
 }
 .sobre-p-strong{
-  font-weight:700;
+  font-weight:500;
   margin-top:6px;
 }
+
 .sobre-foto{
   display:flex;
   align-items:flex-start;
@@ -313,36 +345,83 @@ body.nav-open .nav-float__drawer{
   max-width:520px;
   height:auto;
   position:relative;
-  margin-top:-85px;
+  margin-top:-45px;
   z-index:2;
 }
+
 .sobre-texto-direita{
   text-align:right;
   color:#4b4b4b;
 }
+
 .sobre-rp{
   font-size:1rem;
   line-height:1.55;
   margin:0 0 35px;
+  font-weight:300;
 }
 .sobre-rp-strong{
-  font-weight:800;
+  font-weight:500;
   color:#3f3f3f;
   margin:14px 0 26px;
 }
+
 .sobre-callout{
   margin-top:46px;
   text-align:right;
-  font-family:"MinhaFonte2",sans-serif;
+  font-family:'Passeio', sans-serif;
+  font-weight:300;
   font-size:1.65rem;
   color:#E86D4F;
   line-height:1.15;
 }
 .sobre-callout span{
-  font-weight:900;
+  font-weight:500;
 }
 
-/* ==================== CONTATO (REDUZIDO SEM BAGUNÇAR) ==================== */
+/* ==================== DISTRIBUIÇÃO VERTICAL (DESKTOP) ==================== */
+/* Aqui é o ajuste que você pediu: espalhar os blocos até “chegar nos pés do boneco”. */
+@media (min-width:881px){
+  .sobre-texto-esquerda,
+  .sobre-texto-direita{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    gap: 48px;
+
+    /* dá “altura” pra distribuição acontecer */
+    min-height: clamp(640px, 78vh, 840px);
+  }
+
+  .sobre-texto-esquerda .destaque2{
+    margin-top: -42px; /* reduz o espaço só entre destaque1 -> destaque2 */
+  }
+
+  /* 2) Gap maior antes do callout final */
+  .sobre-texto-direita > .sobre-callout{
+    margin-top: 64px !important; /* 48px (gap) + 16px extra = visível de duas casas */
+  }
+
+  /* Remove margens que quebram a distribuição e deixam buracos irregulares */
+  .sobre-texto-esquerda .sobre-p{
+    margin:0;
+  }
+  .sobre-texto-esquerda .destaque2{
+    margin-bottom:0; /* o space-between cuida do respiro */
+  }
+
+  .sobre-texto-direita .sobre-rp{
+    margin:0;
+  }
+  .sobre-texto-direita .sobre-rp-strong{
+    margin:0;
+  }
+  .sobre-texto-direita .sobre-callout{
+    margin-top:0;
+  }
+}
+
+/* ==================== CONTATO ==================== */
 .contato-container{
   width:100%;
   max-width:1100px;
@@ -358,20 +437,20 @@ body.nav-open .nav-float__drawer{
   max-width:880px;
 }
 .contato-texto p{
-  font-family:"MinhaFonte2",sans-serif;
+  font-family:"Passeio",sans-serif;
   text-transform:uppercase;
   letter-spacing:.08em;
-  font-weight:800;
+  font-weight:500;
   font-size:clamp(16px,1.45vw,22px);
   line-height:1.12;
   color:var(--contato-top);
 }
 .contato-texto p strong{
   display:block;
-  font-family:"MinhaFonte3",sans-serif;
+  font-family:"GloriaHallelujahLocal", sans-serif;
   text-transform:none;
   letter-spacing:0;
-  font-weight:700;
+  font-weight:400;
   margin-top:8px;
   font-size:clamp(30px,3.6vw,34px);
   line-height:.98;
@@ -443,7 +522,7 @@ body.nav-open .nav-float__drawer{
   }
 
   .section-sobre{
-    padding:90px 24px 70px;
+    padding: calc(var(--header-safe) + 10px) 24px 70px;
   }
   .sobre-container{
     grid-template-columns:1fr;
@@ -464,7 +543,7 @@ body.nav-open .nav-float__drawer{
   }
 
   .section-contato{
-    padding-top: clamp(150px, 18vh, 210px);
+    padding-top: clamp(calc(var(--header-safe) + 10px), 18vh, 210px);
     padding-bottom: clamp(24px, 5vh, 60px);
     padding-left: 20px;
     padding-right: 20px;
@@ -481,7 +560,7 @@ body.nav-open .nav-float__drawer{
 
 @media (max-width:768px){
   .section-sobre{
-    padding:90px 24px 70px;
+    padding: calc(var(--header-safe) + 10px) 24px 70px;
   }
   .sobre-container{
     grid-template-columns:1fr;
@@ -502,7 +581,7 @@ body.nav-open .nav-float__drawer{
   }
 
   .section-contato{
-    padding-top: clamp(140px, 18vh, 200px);
+    padding-top: clamp(calc(var(--header-safe) + 10px), 18vh, 200px);
     padding-bottom: clamp(20px, 5vh, 55px);
     padding-left: 18px;
     padding-right: 18px;
