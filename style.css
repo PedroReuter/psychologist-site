@@ -114,6 +114,19 @@ body{
   right:3%;
   z-index:1000;
 }
+
+/* overlay para “clicar fora” */
+.nav-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:999; /* abaixo do menu, acima do site */
+}
+body.nav-open .nav-overlay{
+  display:block;
+}
+
 .nav-float__inner{
   background:var(--ink);
   color:#fff;
@@ -124,7 +137,10 @@ body{
   align-items:center;
   gap:12px;
   box-shadow:0 18px 40px rgba(0,0,0,.25);
+  position:relative;
+  z-index:1000;
 }
+
 .nav-float__left,
 .nav-float__right{
   display:flex;
@@ -139,11 +155,13 @@ body{
   justify-content:flex-end;
   margin-right:15%;
 }
+
 .nav-float__logo img{
   height:68px;
   margin:auto;
   filter:invert(1) brightness(1.35) contrast(1.05);
 }
+
 .nav-link{
   font-family:"Poppins",sans-serif;
   font-size:16px;
@@ -155,6 +173,7 @@ body{
   opacity:1;
   text-decoration:underline;
 }
+
 .social-link img{
   width:43px;
   height:43px;
@@ -164,11 +183,12 @@ body{
 .social-link:hover img{
   opacity:1;
 }
+
 .nav-float__toggle{
   display:none;
   position:absolute;
   right:12px;
-  top:12px;
+  top:30%;
   background:rgba(255,255,255,.08);
   border:2px solid rgba(255,255,255,.85);
   color:#fff;
@@ -180,7 +200,9 @@ body{
   padding:10px 16px;
   gap:10px;
   align-items:center;
+  z-index:1001;
 }
+
 .nav-float__drawer{
   display:none;
   background:var(--ink);
@@ -190,41 +212,11 @@ body{
   padding:10px 18px 16px;
   flex-direction:column;
   gap:12px;
+  position:relative;
+  z-index:1000;
 }
 body.nav-open .nav-float__drawer{
   display:flex;
-}
-
-@media (max-width:880px){
-  :root{
-    --header-safe: 160px;
-  }
-
-  .nav-float{
-    top:18px;
-    left:18px;
-    right:18px;
-  }
-  .nav-float__inner{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 18px;
-    border-radius:22px;
-  }
-  .nav-float__left,
-  .nav-float__right{
-    display:none;
-  }
-  .nav-float__logo img{
-    height:64px;
-  }
-  .nav-float__toggle{
-    display:flex;
-  }
-  .nav-float__drawer{
-    margin:0 18px;
-  }
 }
 
 /* ==================== HERO ==================== */
@@ -290,14 +282,13 @@ body.nav-open .nav-float__drawer{
     minmax(420px, 520px)
     minmax(380px, 460px);
   gap:60px;
-  align-items:stretch; /* era start: precisamos “esticar” as colunas pra poder distribuir */
+  align-items:stretch;
   justify-content:center;
   max-width:1460px;
   margin:0 auto;
   width:100%;
 }
 
-/* Sobre usa Passeio (Light/Medium) */
 .sobre-texto-esquerda,
 .sobre-texto-direita{
   font-family:'Passeio', sans-serif;
@@ -380,45 +371,30 @@ body.nav-open .nav-float__drawer{
 }
 
 /* ==================== DISTRIBUIÇÃO VERTICAL (DESKTOP) ==================== */
-/* Aqui é o ajuste que você pediu: espalhar os blocos até “chegar nos pés do boneco”. */
 @media (min-width:881px){
   .sobre-texto-esquerda,
   .sobre-texto-direita{
     display:flex;
     flex-direction:column;
-    justify-content: flex-start;
-    gap: 48px;
-
-    /* dá “altura” pra distribuição acontecer */
+    justify-content:flex-start;
+    gap:48px;
     min-height: clamp(640px, 78vh, 840px);
   }
 
   .sobre-texto-esquerda .destaque2{
-    margin-top: -42px; /* reduz o espaço só entre destaque1 -> destaque2 */
+    margin-top:-42px;
   }
 
-  /* 2) Gap maior antes do callout final */
   .sobre-texto-direita > .sobre-callout{
-    margin-top: 64px !important; /* 48px (gap) + 16px extra = visível de duas casas */
+    margin-top:64px !important;
   }
 
-  /* Remove margens que quebram a distribuição e deixam buracos irregulares */
-  .sobre-texto-esquerda .sobre-p{
-    margin:0;
-  }
-  .sobre-texto-esquerda .destaque2{
-    margin-bottom:0; /* o space-between cuida do respiro */
-  }
+  .sobre-texto-esquerda .sobre-p{ margin:0; }
+  .sobre-texto-esquerda .destaque2{ margin-bottom:0; }
 
-  .sobre-texto-direita .sobre-rp{
-    margin:0;
-  }
-  .sobre-texto-direita .sobre-rp-strong{
-    margin:0;
-  }
-  .sobre-texto-direita .sobre-callout{
-    margin-top:0;
-  }
+  .sobre-texto-direita .sobre-rp{ margin:0; }
+  .sobre-texto-direita .sobre-rp-strong{ margin:0; }
+  .sobre-texto-direita .sobre-callout{ margin-top:0; }
 }
 
 /* ==================== CONTATO ==================== */
@@ -486,59 +462,108 @@ body.nav-open .nav-float__drawer{
 
 /* ==================== BREAKPOINTS ==================== */
 @media (max-width:880px){
+  :root{
+    --header-safe: 160px;
+  }
+
+  .nav-float{
+    top:18px;
+    left:18px;
+    right:18px;
+  }
+  .nav-float__inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 18px;
+    border-radius:22px;
+  }
+  .nav-float__left,
+  .nav-float__right{
+    display:none;
+  }
+  .nav-float__logo img{
+    height:35px;
+  }
+
   .hero-copy{
     margin-top:160px;
   }
+
   .hero-eyebrow{
-    font-size:clamp(25px,7vw,4px);
+    font-size:clamp(25px, 7vw, 44px);
     letter-spacing:.06em;
-    margin-top: -118px;
+    margin-top:-118px;
   }
+
   .hero-script{
     font-size:clamp(28px, 9vw, 56px);
     margin-top:-21px;
+    white-space:nowrap;
   }
+
+  /* conserto do clamp (tava 1180px) */
   .decor-lampada{
-    width:clamp(480px,44vw,280px);
+    width:clamp(1180px, 44vw, 280px);
   }
+
   .decor-sofa{
     right:2%;
     bottom:32px;
     width:95vw;
   }
+
   .decor-cafe{
     right:35%;
     bottom:110px;
     width:28vw;
   }
+
   .decor-planta{
     left:28%;
     bottom:22%;
     width:12vw;
   }
+
   .decor-porta{
     display:none;
   }
 
   .section-sobre{
     padding: calc(var(--header-safe) + 10px) 24px 70px;
+    position:relative;
+    overflow:hidden;
   }
+
   .sobre-container{
-    grid-template-columns:1fr;
-    gap:34px;
-    justify-items:center;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    justify-items:stretch;
     max-width:680px;
+    align-items:start;
   }
+
+  .sobre-foto{
+    position:absolute;
+    right:-65px;
+    top:120px;
+    transform:none;
+  }
+
+  .foto-quadro{
+    width:100%;
+    max-width:240px;
+    margin-top:0;
+  }
+
   .sobre-texto-direita{
+    grid-column: 1 / -1;
     text-align:left;
+    margin-top:10px !important;
   }
+
   .sobre-callout{
     text-align:left;
-  }
-  .foto-quadro{
-    width:min(420px, 92vw);
-    max-width:420px;
-    margin-top:0;
   }
 
   .section-contato{
@@ -551,9 +576,158 @@ body.nav-open .nav-float__drawer{
   .telefone-wrapper{
     min-height:320px;
   }
+
   .contato-botao{
     top:18%;
-    left:50%;
+    left:30%;
+    width:50%;
+  }
+
+  /* bloco de baixo: sem 170% */
+  .section-sobre .sobre-bottom{
+    width:100%;
+    margin-top:18px;
+    padding-bottom:10px;
+  }
+  .section-sobre .sobre-bottom .sobre-p:last-child{
+    margin-bottom:0 !important;
+  }
+
+  /* Tipos menores + foto maior */
+  .section-sobre .destaque1,
+  .section-sobre .destaque2{
+    font-size: clamp(1.05rem, 3.6vw, 1.28rem) !important;
+    line-height: 1.12 !important;
+  }
+
+  .section-sobre .sobre-p,
+  .section-sobre .sobre-rp{
+    font-size: 0.90rem !important;
+    line-height: 1.60 !important;
+  }
+
+  .section-sobre .sobre-callout{
+    font-size: 1.25rem !important;
+    line-height: 1.12 !important;
+  }
+
+  .section-sobre .foto-quadro{
+    max-width: 300px !important;
+  }
+
+  .section-sobre .sobre-texto-direita .sobre-rp:first-child{
+    margin-top: 0 !important;
+  }
+
+  /* ===== MENU MOBILE (SEM “VINCO” NAS LATERAIS) ===== */
+
+  /* botão MENU como imagem */
+  .nav-float__toggle{
+    display:flex;
+    width:100px;
+    height:30px;
+    padding:0;
+    border:none;
+    background:transparent url("assets/menu.png") center/contain no-repeat;
+  }
+  .nav-float__toggle span,
+  .nav-float__toggle i{
+    display:none;
+  }
+  body.nav-open .nav-float__toggle{
+    background-image:url("assets/menu-close.png");
+  }
+
+  /* quando aberto: header vira “topo” do painel único */
+  body.nav-open .nav-float__inner{
+    border-radius:26px 26px 0 0;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+  }
+
+  /* drawer encaixado, sem laterais “quebradas” */
+  .nav-float__drawer{
+    display:none;
+    position:fixed;
+    left:18px;
+    right:18px;
+
+    /* cola no header: altura do header no mobile ~ 70-76px */
+    top: calc(18px + 74px);
+
+    bottom:auto;
+    max-height: none !important;
+    overflow: hidden !important;
+
+    margin:0;
+    padding:18px 18px 18px;
+
+    border-radius:0 0 26px 26px;
+    z-index:1001;
+
+    justify-content:flex-start;
+    align-items:center;
+    gap:22px;
+
+    /* remove qualquer “linha” imaginária */
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+  }
+  body.nav-open .nav-float__drawer{
+    display:flex;
+  }
+
+  /* links maiores e centralizados */
+  .nav-float__drawer .nav-link{
+    font-size:26px;
+    opacity:1;
+    text-decoration:none;
+  }
+
+  /* linha separadora (apenas no topo, sem encostar nas bordas) */
+  .nav-float__drawer::before{
+    content:"";
+    width:78%;
+    height:2px;
+    background:rgba(255,255,255,.35);
+    margin:6px 0 6px;
+  }
+
+  /* ícones sociais dentro do drawer (PRECISA existir no HTML) */
+  .nav-float__drawer .nav-social{
+    display:flex;
+    gap:22px;
+    margin-top:14px;
+  }
+  .nav-float__drawer .nav-social a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .nav-float__drawer .nav-social img{
+    width:54px;
+    height:54px;
+    filter:invert(1) brightness(1.2);
+    opacity:.95;
+  }
+
+  .section-sobre .sobre-bottom{
+    width: 170%;
+    margin-top: 18px;
+    padding-bottom: 10px;  /* em vez de margin-bottom no último <p> */
+  }
+
+  .section-sobre .sobre-bottom .sobre-p:last-child{
+    margin-bottom: 0 !important;
+  }
+
+  .nav-back{
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.75);
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 12px 26px;
+    border-radius: 999px;
   }
 }
 
@@ -561,22 +735,33 @@ body.nav-open .nav-float__drawer{
   .section-sobre{
     padding: calc(var(--header-safe) + 10px) 24px 70px;
   }
+
   .sobre-container{
-    grid-template-columns:1fr;
-    gap:34px;
-    justify-items:center;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+    justify-items:stretch;
     max-width:680px;
+    align-items:start;
   }
+
+  .foto-quadro{
+    width:100%;
+    max-width:220px;
+    margin-top:0;
+  }
+
+  .section-sobre .foto-quadro{
+    max-width: 290px !important;
+  }
+
   .sobre-texto-direita{
+    grid-column: 1 / -1;
     text-align:left;
+    margin-top:10px !important;
   }
+
   .sobre-callout{
     text-align:left;
-  }
-  .foto-quadro{
-    width:min(420px, 92vw);
-    max-width:420px;
-    margin-top:0;
   }
 
   .section-contato{
@@ -585,7 +770,7 @@ body.nav-open .nav-float__drawer{
     padding-left: 18px;
     padding-right: 18px;
   }
-  
+
   .contato-container{
     gap:36px;
   }
@@ -593,8 +778,8 @@ body.nav-open .nav-float__drawer{
     min-height:300px;
   }
   .contato-botao{
-    top:18%;
-    left:50%;
+    top:12%;
+    left:40%;
   }
   .btn-img{
     width:min(290px, 76vw);

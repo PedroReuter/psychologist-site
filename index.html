@@ -13,6 +13,7 @@
 </head>
 <body>
   <section id="home" class="section section-home">
+
     <header class="nav-float">
       <div class="nav-float__inner">
         <nav class="nav-float__left">
@@ -35,19 +36,26 @@
         </div>
 
         <!-- hamburguer no mobile -->
-        <button class="nav-float__toggle" aria-label="Abrir menu"
-                onclick="document.body.classList.toggle('nav-open')">
-          <span>MENU</span>
-          <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
+        <button class="nav-float__toggle" id="navToggle" aria-label="Abrir menu"></button>
       </div>
 
       <div class="nav-float__drawer">
         <a href="#home" class="nav-link">Home</a>
         <a href="#sobre" class="nav-link">Sobre mim</a>
         <a href="#contato" class="nav-link">Contato</a>
+        <button type="button" class="nav-back"
+                onclick="document.body.classList.remove('nav-open')">
+          VOLTAR
+        </button>
+        <div class="nav-social">
+          <a href="https://www.instagram.com/frantiescopsi/" class="social-link"><img src="assets/instagram.png" alt="Instagram"></a>
+          <a href="https://wa.me/5551997152767" class="social-link"><img src="assets/whatsapp.png" alt="WhatsApp"></a>
+        </div>
       </div>
     </header>
+
+    <!-- overlay: fica fora do header pra cobrir a tela toda e fechar ao clicar fora -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
 
     <div class="hero-copy">
       <p class="hero-eyebrow">AQUI A ESCUTA CRIA</p>
@@ -87,17 +95,19 @@
           Universidade de Santa Cruz do Sul (UNISC).
         </p>
 
-        <p class="sobre-p sobre-p-strong">
-          Atuo com base na Terapia do Esquema
-          integrando passado, presente e futuro,
-          razão e emoção, dor e potência.
-        </p>
+        <div class="sobre-bottom">
+          <p class="sobre-p sobre-p-strong">
+            Atuo com base na Terapia do Esquema
+            integrando passado, presente e futuro,
+            razão e emoção, dor e potência.
+          </p>
 
-        <p class="sobre-p">
-          Meu trabalho é escutar para além do que
-          é dito, e traduzir padrões em possibilidades,
-          dúvidas em caminhos, sintomas em sentido.
-        </p>
+          <p class="sobre-p">
+            Meu trabalho é escutar para além do que
+            é dito, e traduzir padrões em possibilidades,
+            dúvidas em caminhos, sintomas em sentido.
+          </p>
+        </div>
       </div>
 
       <div class="sobre-foto">
@@ -158,7 +168,7 @@
           <a href="https://wa.me/5551997152767" target="_blank" aria-label="Agende sua consulta">
             <picture>
               <!-- Versão mobile -->
-              <source srcset="assets/agende-sua-consulta-mobile.png" media="(max-width: 768px)">
+              <source srcset="assets/agende-sua-consulta.png" media="(max-width: 768px)">
               <!-- Versão desktop (padrão) -->
               <img src="assets/agende-sua-consulta.png" alt="Agende sua consulta" class="btn-img">
             </picture>
