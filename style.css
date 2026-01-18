@@ -490,32 +490,31 @@ body.nav-open .nav-float__drawer{
     margin-top:160px;
   }
   .hero-eyebrow{
-    font-size:clamp(28px,7vw,44px);
+    font-size:clamp(25px,7vw,4px);
     letter-spacing:.06em;
+    margin-top: -118px;
   }
   .hero-script{
-    font-size:clamp(40px,10vw,56px);
-    margin-top:8px;
+    font-size:clamp(28px, 9vw, 56px);
+    margin-top:-21px;
   }
   .decor-lampada{
-    top:110px;
-    width:clamp(180px,44vw,280px);
+    width:clamp(480px,44vw,280px);
   }
   .decor-sofa{
     right:2%;
     bottom:32px;
-    width:82vw;
+    width:95vw;
   }
   .decor-cafe{
-    right:40%;
+    right:35%;
     bottom:110px;
-    width:14vw;
+    width:28vw;
   }
   .decor-planta{
-    left:14%;
-    bottom:32px;
-    width:22vw;
-    display:none;
+    left:28%;
+    bottom:22%;
+    width:12vw;
   }
   .decor-porta{
     display:none;
