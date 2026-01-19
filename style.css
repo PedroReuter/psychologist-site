@@ -652,7 +652,7 @@ body.nav-open .nav-float__drawer{
     right:18px;
 
     /* cola no header: altura do header no mobile ~ 70-76px */
-    top: calc(18px + 74px);
+    top: calc(18px + 54px);
 
     bottom:auto;
     max-height: none !important;
