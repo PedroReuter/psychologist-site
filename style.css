@@ -504,7 +504,7 @@ body.nav-open .nav-float__drawer{
 
   /* conserto do clamp (tava 1180px) */
   .decor-lampada{
-    width:clamp(1180px, 44vw, 280px);
+    width: clamp(280px, 88vw, 1180px);
   }
 
   .decor-sofa{
